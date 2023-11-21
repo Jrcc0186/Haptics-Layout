@@ -1,0 +1,25 @@
+const int turnSignalPin = 2;  // Replace with the actual pin connected to turn signals
+const int hapticMotorPin = 3;  // Replace with the actual pin connected to haptic motor
+
+void setup() {
+  pinMode(turnSignalPin, INPUT);
+  pinMode(hapticMotorPin, OUTPUT);
+}
+
+void loop() {
+  // Check if turn signal is activated
+  if (digitalRead(turnSignalPin) == HIGH) {
+    activateHapticMotor();
+  } else {
+    // Turn off haptic motor if turn signal is not activated
+    digitalWrite(hapticMotorPin, LOW);
+  }
+}
+
+void activateHapticMotor() {
+  // Activate the haptic motor when turn signal is on
+  digitalWrite(hapticMotorPin, HIGH);
+  delay(500);  // Adjust the delay based on your preference for haptic feedback duration
+  digitalWrite(hapticMotorPin, LOW);
+  delay(500);  // Adjust the delay based on your preference for the pause between feedback
+}
